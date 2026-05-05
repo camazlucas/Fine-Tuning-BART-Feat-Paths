@@ -24,8 +24,8 @@ def load_kg(path):
 if __name__ == "__main__":
 
     KG_PATH = "../Dataset/MetaQA/kb.txt"
-    QA_PATH = "../Dataset/MetaQA/1-hop/vanilla/qa_dev.txt"
-    OUTPUT_PATH = "../Dataset/MetaQA/1-hop/vanilla/valid_paths_1.json"
+    QA_PATH = "../Dataset/MetaQA/3-hop/vanilla/qa_dev.txt"
+    OUTPUT_PATH = "../Dataset/MetaQA/3-hop/vanilla/valid_multi_paths_3.json"
 
     print("Carregando KG...")
     graph = load_kg(KG_PATH)

@@ -106,11 +106,17 @@ def build_dataset_2(qa_file, graph, output_file, max_hops=3):
 
         path = find_paths(graph, start, target, max_hops)
 
-        if path is None:
+        if not path:
             skipped += 1
             continue
         
-        formatted_paths = [format_reasoning_path(p) for p in path]
+        valid_paths = [p for p in path if p]
+
+        if not valid_paths:
+            skipped += 1
+            continue
+
+        formatted_paths = [format_reasoning_path(p) for p in valid_paths]
 
         data.append({
             "input": q.replace(f"[{start}]", start),

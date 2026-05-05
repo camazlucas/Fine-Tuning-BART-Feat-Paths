@@ -1,10 +1,10 @@
 import json
 
 # carregar arquivos
-with open("Dataset/MetaQA/3-hop/vanilla/train_paths_3.json", "r", encoding="utf-8") as f:
+with open("../Dataset/MetaQA/1-hop/vanilla/train_paths_1.json", "r", encoding="utf-8") as f:
     shortest = json.load(f)
 
-with open("Dataset/MetaQA/3-hop/vanilla/train_paths_RoG3_clean.json", "r", encoding="utf-8") as f:
+with open("../Dataset/MetaQA/1-hop/vanilla/train_multi_paths_1.json", "r", encoding="utf-8") as f:
     multi = json.load(f)
 
 # transformar em sets de perguntas
