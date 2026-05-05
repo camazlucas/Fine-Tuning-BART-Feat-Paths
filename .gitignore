@@ -1,4 +1,4 @@
 venv/
-Descartado/
-Model/BART Paths Fine-Tunning/Modelo Pronto/
-Model/BART Relational Paths Fine-Tunning/Modelo Pronto/
+Dataset/Descartado/
+Language Model/BART Paths Fine-Tunning/Modelo Pronto/*
+Language Model/BART Relational Paths Fine-Tunning/Modelo Pronto/*
