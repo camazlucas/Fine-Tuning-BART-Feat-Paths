@@ -1,7 +1,7 @@
 import json
 
-INPUT_PATH = "train_paths_RoG2_clean.json"
-OUTPUT_PATH = "train_relation_paths.json"
+INPUT_PATH = "../Dataset/MetaQA/dataset_train_multi_paths.json"
+OUTPUT_PATH = "../Model/BART Relational Paths Fine-Tunning/dataset_train_relation.json"
 
 def extract_relations(path_str):
     tokens = path_str.split(" -> ")

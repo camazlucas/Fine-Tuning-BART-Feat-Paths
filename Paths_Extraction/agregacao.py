@@ -4,11 +4,11 @@ import random
 # =========================
 # CONFIG
 # =========================
-FILE_1HOP = "../Dataset/MetaQA/1-hop/vanilla/train_multi_paths_1.json"
-FILE_2HOP = "../Dataset/MetaQA/2-hop/vanilla/train_multi_paths_2.json"
-FILE_3HOP = "../Dataset/MetaQA/3-hop/vanilla/train_multi_paths_3.json"
+FILE_1HOP = "../Dataset/MetaQA/1-hop/vanilla/valid_multi_paths_1.json"
+FILE_2HOP = "../Dataset/MetaQA/2-hop/vanilla/valid_multi_paths_2.json"
+FILE_3HOP = "../Dataset/MetaQA/3-hop/vanilla/valid_multi_paths_3.json"
 
-OUTPUT_FILE = "../Dataset/MetaQA/dataset_train_multi_paths.json"
+OUTPUT_FILE = "../Dataset/MetaQA/dataset_valid_multi_paths.json"
 
 N_HOP = 20000
 
