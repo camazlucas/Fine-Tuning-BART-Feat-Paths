@@ -13,34 +13,61 @@ def extract_entity(question):
 # -----------------------------
 # 3. BFS para encontrar top paths mais curtos
 # -----------------------------
-def find_paths(graph, start, target, max_hops=3, top_k=3):
-    queue = deque([(start, [])])
+def find_shortest_distance(graph, start, target, max_hops=3):
+    queue = deque([(start, 0)])
+    visited = set([start])
+
+    while queue:
+        node, dist = queue.popleft()
+
+        if node == target:
+            return dist
+
+        if dist >= max_hops:
+            continue
+
+        for _, neighbor in graph.get(node, []):
+            if neighbor not in visited:
+                visited.add(neighbor)
+                queue.append((neighbor, dist + 1))
+
+    return None
+
+def find_paths_fixed_length(graph, start, target, length, top_k=3):
+    queue = deque([(start, [], {start})])
     paths = []
 
     while queue:
-        node, path = queue.popleft()
+        node, path, visited = queue.popleft()
 
-        if len(path) >= max_hops:
+        if len(path) > length:
+            continue
+
+        if node == target and len(path) == length:
+            paths.append(path)
+            if len(paths) >= top_k:
+                return paths
             continue
 
         for relation, neighbor in graph.get(node, []):
-            # evita ciclos no path atual (não global!)
-            if any(neighbor == t for (_, _, t) in path):
+            if neighbor in visited:
                 continue
 
-            new_path = path + [(node, relation, neighbor)]
-
-            if neighbor == target:
-                paths.append(new_path)
-
-                if len(paths) >= top_k:
-                    return paths
-
-                continue
-
-            queue.append((neighbor, new_path))
+            queue.append((
+                neighbor,
+                path + [(node, relation, neighbor)],
+                visited | {neighbor}
+            ))
 
     return paths
+
+def find_paths(graph, start, target, max_hops=3, top_k=3):
+    dist = find_shortest_distance(graph, start, target, max_hops)
+
+    if dist is None:
+        return []
+
+    return find_paths_fixed_length(graph, start, target, dist, top_k)
 
 # -----------------------------
 # 4. Formatar multiplos paths
